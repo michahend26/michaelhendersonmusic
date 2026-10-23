@@ -134,8 +134,7 @@ img{max-width:100%}
  .foot{height:auto;max-height:none;min-height:0;padding:28px 6%;grid-template-columns:1fr;gap:20px;text-align:center}.foot-wordmark{margin:auto;width:160px}.foot-mark{display:none}.foot-center .socials{display:flex}.legal{white-space:normal;line-height:1.7;font-size:9px}
 }
 
-
-/* Use product imagery for merch instead of CSS-drawn garments */
+/* Show product imagery instead of CSS-drawn garment placeholders */
 #store .merch-row{display:block}
 #store .merch-products-image{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 6px 7px #0008)}
 @media(max-width:560px){
@@ -144,116 +143,6 @@ img{max-width:100%}
 }
 
 /* Restore Upcoming Shows section to the earlier approved preview */
-#tour.section{display:block;height:auto;min-height:0;max-height:none;overflow:visible;padding:66px 7%;background:var(--paper);color:#1b1711;border:0}
-#tour .tour{height:auto;min-height:0;max-height:none;display:grid;grid-template-columns:.8fr 2fr;gap:32px;align-items:center;background:transparent;color:inherit;overflow:visible;padding:0}
-#tour .tour h2{font:600 clamp(35px,4.5vw,56px)/1 var(--display);text-transform:uppercase;margin:13px 0 18px}
-#tour .tour p{font-size:13px;line-height:1.5;color:#514636}
-#tour .dates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;height:auto}
-#tour .date{display:block;min-width:0;border:1px solid #b3a487;border-right:1px solid #b3a487;padding:17px 14px}
-#tour .date:last-child{border-right:1px solid #b3a487}
-#tour .date-big{font:600 28px var(--display);color:var(--rust);grid-row:auto}
-#tour .date strong{display:block;font:600 15px var(--display);line-height:1.2;text-transform:uppercase;white-space:normal;margin:8px 0}
-#tour .date small{display:block;color:#71634f;font-size:10px;line-height:1.5;margin-bottom:13px}
-#tour .date .btn{display:inline-flex;grid-column:auto;justify-self:auto;margin-top:0;min-height:0;padding:9px 12px;font-size:10px;background:#211c15;color:var(--cream);border-color:#211c15}
-@media(max-width:760px){
- #tour.section{padding:45px 6%}
- #tour .tour{grid-template-columns:1fr;gap:22px}
- #tour .dates{grid-template-columns:1fr;gap:10px}
- #tour .date{display:grid;grid-template-columns:65px 1fr;gap:4px;align-items:start}
- #tour .date-big{grid-row:span 3}
- #tour .date strong{margin:8px 0}
- #tour .date small{margin:0 0 12px}
- #tour .date .btn{grid-column:2;width:max-content;align-self:start}
-}
-
-</style>
-</head>
-<body>
-<header class="top" id="top">
- <a href="#top" aria-label="Michael Henderson home"><img class="brand" src="/assets/mh-monogram.svg" alt="Michael Henderson"></a>
- <nav class="nav" aria-label="Main navigation"><a href="#top">Home</a><a href="#music">Music</a><a href="#videos">Videos</a><a href="#tour">Tour</a><a href="#about">About</a><a href="#store">Store</a><a href="#contact">Contact</a></nav>
- <div class="socials" aria-label="Social and streaming channels">
-  <a href="#music" aria-label="Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M5.5 9.2c4.7-1.4 9.8-.8 13.3 1.4M6.5 12.2c3.8-1.1 8-.4 11 1.2M7.6 15.1c3-.8 6.1-.3 8.6 1" fill="none" stroke="#11100e" stroke-width="1.6" stroke-linecap="round"/></svg></a>
-  <a href="#music" aria-label="Apple Music"><svg viewBox="0 0 24 24"><path d="M16.6 2.3c-.2 2-1.5 3.5-3.5 3.8-.1-1.8 1.4-3.5 3.5-3.8ZM19.7 16.9c-.8 1.8-2 3.7-3.6 3.7-1.1 0-1.4-.7-3-.7s-2 .7-3.1.7c-1.4 0-2.7-1.6-3.6-3.4-2-3.8-1.3-8.8 2.3-9.2 1.4-.2 2.4.8 3.5.8 1.1 0 2.1-1 3.7-.8 1.1.1 2.2.7 2.8 1.7-2.5 1.5-2.2 5 .9 6.1Z"/></svg></a>
-  <a href="#videos" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="#11100e"/></svg></a>
-  <a href="#contact" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.8" r="1.2"/></svg></a>
-  <a href="#contact" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.8 22V13h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7h1.9V2.5c-.9-.1-1.8-.2-2.7-.2-2.7 0-4.5 1.6-4.5 4.7v2.5H7.2V13h3.1v9z"/></svg></a>
-  <a href="#videos" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 2h3.1c.2 2.1 1.3 3.8 3.7 4.3v3.1c-1.6 0-3-.5-4.2-1.3v6.7c0 3.7-2.7 6.4-6.4 6.4A6.2 6.2 0 0 1 4 15.1c0-3.7 3.1-6.4 6.7-6.2v3.4c-1.6-.4-3.4.8-3.4 2.7a2.9 2.9 0 0 0 5.8 0V2Z"/></svg></a>
- </div>
-</header>
-
-<main>
-<section class="hero">
- <div class="hero-inner">
-  <div class="kicker">Alabama born · Country raised</div>
-  <img class="hero-logo" src="/assets/michael-henderson-wordmark.png" alt="Michael Henderson artist logo">
-  <div class="rule">━━━━ ★★★ ━━━━</div>
-  <div class="tagline">Country music from the heart of Alabama</div>
-  <div class="actions"><a class="btn" href="#music">▶ &nbsp; Listen now</a><a class="btn ghost" href="#videos">▷ &nbsp; Watch videos</a></div>
- </div>
-</section>
-
-<section class="release" id="music">
- <div class="cover"><img src="/assets/dirtroad-kind-of-love-cover.webp" alt="Dirtroad Kind of Love album artwork"></div>
- <div class="release-copy">
-  <div class="eyebrow">The new album</div>
-  <span class="script">Dirtroad Kind of Love</span>
-  <p class="copy">Real stories. Real places. Real people. Dirtroad Kind of Love is a collection of songs about faith, family, small towns, hard work, and the kind of love that never lets go.</p>
-  <div class="platforms" aria-label="Streaming platforms"><span class="platform spotify"><i>≋</i> Spotify</span><span class="platform apple"><i>♪</i> Apple Music</span><span class="platform youtube"><i>▶</i> YouTube</span><span class="platform amazon"><i>a</i> Amazon Music</span><span class="platform pandora"><i>P</i> Pandora</span></div>
-  <div class="release-actions"><a class="btn" href="/epk/">Listen now</a><a class="btn ghost" href="/epk/">View album</a></div>
- </div>
-</section>
-
-<section class="section paper" id="tour"><div class="tour"><div><div class="eyebrow">Come see us</div><h2>Upcoming<br>shows</h2><p>Good songs, good people, and a little Alabama in every set.</p></div><div class="dates"><div class="date"><div class="date-big">LIVE</div><div><strong>Show dates</strong><small>Upcoming dates to be announced</small><a class="btn" href="#contact">Booking info</a></div></div><div class="date"><div class="date-big">AL</div><div><strong>Alabama & beyond</strong><small>Venues · Festivals · Private events</small><a class="btn" href="/epk/">View EPK</a></div></div><div class="date"><div class="date-big">♪</div><div><strong>Bring the music</strong><small>Now booking live performances</small><a class="btn" href="#contact">Get in touch</a></div></div></div></div></section>
-
-<section class="story" id="about">
- <div class="story-text">
-  <div class="eyebrow">About</div>
-  <h2>The story</h2>
-  <p class="copy">Michael Henderson is a country singer-songwriter from Alabama — a firefighter, a husband, and a man of faith. His music is rooted in real life: family, small towns, hard work, and the grace that carries us through it all.</p>
-  <a class="btn ghost" href="/epk/">Read my story</a>
- </div>
- <div class="story-img" role="img" aria-label="Country musician between performances"></div>
-</section>
-
-<section class="videos" id="videos">
- <div class="section-heading"><h2>Latest videos</h2><a href="/epk/">View all videos&nbsp; →</a></div>
- <div class="vidgrid">
-  <a class="vid" href="/epk/"><div class="thumb"><img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=900&q=85" alt=""><span class="play">▶</span></div><strong>Missing You</strong><small>Official Music Video</small></a>
-  <a class="vid" href="/epk/"><div class="thumb"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=85" alt=""><span class="play">▶</span></div><strong>Acoustic sessions</strong><small>Live from the shop</small></a>
-  <a class="vid" href="/epk/"><div class="thumb"><img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=900&q=85" alt=""><span class="play">▶</span></div><strong>Live performances</strong><small>On the road</small></a>
- </div>
-</section>
-
-<section class="merch" id="store">
- <div class="section-heading"><div><h2>Official merch</h2><p>Represent the music. Support the journey.</p></div><a href="#contact">Shop all&nbsp; →</a></div>
- <div class="merch-row" aria-label="Michael Henderson merchandise collection">
-  <img class="merch-products-image" src="/assets/merch-products.jpg" alt="Michael Henderson merchandise collection featuring branded shirts, a cap, a hoodie, and a camouflage design">
- </div>
-</section>
-
-<section class="signup" id="contact">
- <h2>Join the honky tonk</h2>
- <p>Get new music, show announcements, behind-the-scenes stories<br>and exclusive releases directly from Michael.</p>
- <form class="form" onsubmit="event.preventDefault();alert('Thanks for your interest! Email signup will be connected soon.');">
-  <input aria-label="First name" name="name" placeholder="First Name" autocomplete="given-name">
-  <input aria-label="Email address" name="email" type="email" placeholder="Email Address" required autocomplete="email">
-  <button class="btn" type="submit">Join</button>
- </form>
-</section>
-</main>
-
-<footer class="foot">
- <a href="#top"><img class="foot-wordmark" src="/assets/michael-henderson-wordmark.png" alt="Michael Henderson"></a>
- <div class="foot-center">
-  <nav class="footlinks" aria-label="Footer navigation"><a href="#top">Home</a><a href="#music">Music</a><a href="#videos">Videos</a><a href="#tour">Tour</a><a href="#about">About</a><a href="#store">Store</a><a href="#contact">Contact</a></nav>
-  <div class="socials"><a href="#music" aria-label="Spotify"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M5.5 9.2c4.7-1.4 9.8-.8 13.3 1.4M6.5 12.2c3.8-1.1 8-.4 11 1.2M7.6 15.1c3-.8 6.1-.3 8.6 1" fill="none" stroke="#11100e" stroke-width="1.6" stroke-linecap="round"/></svg></a><a href="#music" aria-label="Apple Music"><svg viewBox="0 0 24 24"><path d="M16.6 2.3c-.2 2-1.5 3.5-3.5 3.8-.1-1.8 1.4-3.5 3.5-3.8ZM19.7 16.9c-.8 1.8-2 3.7-3.6 3.7-1.1 0-1.4-.7-3-.7s-2 .7-3.1.7c-1.4 0-2.7-1.6-3.6-3.4-2-3.8-1.3-8.8 2.3-9.2 1.4-.2 2.4.8 3.5.8 1.1 0 2.1-1 3.7-.8 1.1.1 2.2.7 2.8 1.7-2.5 1.5-2.2 5 .9 6.1Z"/></svg></a><a href="#videos" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z" fill="#11100e"/></svg></a><a href="#contact" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.8" r="1.2"/></svg></a><a href="#contact" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.8 22V13h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7h1.9V2.5c-.9-.1-1.8-.2-2.7-.2-2.7 0-4.5 1.6-4.5 4.7v2.5H7.2V13h3.1v9z"/></svg></a><a href="#videos" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 2h3.1c.2 2.1 1.3 3.8 3.7 4.3v3.1c-1.6 0-3-.5-4.2-1.3v6.7c0 3.7-2.7 6.4-6.4 6.4A6.2 6.2 0 0 1 4 15.1c0-3.7 3.1-6.4 6.7-6.2v3.4c-1.6-.4-3.4.8-3.4 2.7a2.9 2.9 0 0 0 5.8 0V2Z"/></svg></a></div>
-  <div class="legal">© 2026 MICHAEL HENDERSON. ALL RIGHTS RESERVED. &nbsp; | &nbsp; PRIVACY &nbsp; | &nbsp; TERMS</div>
- </div>
- <a href="#top" aria-label="Back to top"><img class="foot-mark" src="/assets/mh-monogram.svg" alt=""></a>
-</footer>
-</body>
-</html>
 #tour.section{display:block;height:auto;min-height:0;max-height:none;overflow:visible;padding:66px 7%;background:var(--paper);color:#1b1711;border:0}
 #tour .tour{height:auto;min-height:0;max-height:none;display:grid;grid-template-columns:.8fr 2fr;gap:32px;align-items:center;background:transparent;color:inherit;overflow:visible;padding:0}
 #tour .tour h2{font:600 clamp(35px,4.5vw,56px)/1 var(--display);text-transform:uppercase;margin:13px 0 18px}
