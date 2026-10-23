@@ -133,6 +133,30 @@ img{max-width:100%}
  .signup{height:230px;max-height:none;padding:22px 6%}.signup h2{font-size:30px}.signup p{font-size:10px;max-width:320px;line-height:1.45}.form{width:100%;max-width:360px;flex-wrap:wrap}.form input{height:38px;font-size:10px}.form button{height:38px}
  .foot{height:auto;max-height:none;min-height:0;padding:28px 6%;grid-template-columns:1fr;gap:20px;text-align:center}.foot-wordmark{margin:auto;width:160px}.foot-mark{display:none}.foot-center .socials{display:flex}.legal{white-space:normal;line-height:1.7;font-size:9px}
 }
+
+/* Restore Upcoming Shows section to the earlier approved preview */
+#tour.section{display:block;height:auto;min-height:0;max-height:none;overflow:visible;padding:66px 7%;background:var(--paper);color:#1b1711;border:0}
+#tour .tour{height:auto;min-height:0;max-height:none;display:grid;grid-template-columns:.8fr 2fr;gap:32px;align-items:center;background:transparent;color:inherit;overflow:visible;padding:0}
+#tour .tour h2{font:600 clamp(35px,4.5vw,56px)/1 var(--display);text-transform:uppercase;margin:13px 0 18px}
+#tour .tour p{font-size:13px;line-height:1.5;color:#514636}
+#tour .dates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;height:auto}
+#tour .date{display:block;min-width:0;border:1px solid #b3a487;border-right:1px solid #b3a487;padding:17px 14px}
+#tour .date:last-child{border-right:1px solid #b3a487}
+#tour .date-big{font:600 28px var(--display);color:var(--rust);grid-row:auto}
+#tour .date strong{display:block;font:600 15px var(--display);line-height:1.2;text-transform:uppercase;white-space:normal;margin:8px 0}
+#tour .date small{display:block;color:#71634f;font-size:10px;line-height:1.5;margin-bottom:13px}
+#tour .date .btn{display:inline-flex;grid-column:auto;justify-self:auto;margin-top:0;min-height:0;padding:9px 12px;font-size:10px;background:#211c15;color:var(--cream);border-color:#211c15}
+@media(max-width:760px){
+ #tour.section{padding:45px 6%}
+ #tour .tour{grid-template-columns:1fr;gap:22px}
+ #tour .dates{grid-template-columns:1fr;gap:10px}
+ #tour .date{display:grid;grid-template-columns:65px 1fr;gap:4px;align-items:start}
+ #tour .date-big{grid-row:span 3}
+ #tour .date strong{margin:8px 0}
+ #tour .date small{margin:0 0 12px}
+ #tour .date .btn{grid-column:2;width:max-content;align-self:start}
+}
+
 </style>
 </head>
 <body>
@@ -171,17 +195,7 @@ img{max-width:100%}
  </div>
 </section>
 
-<section class="tour" id="tour">
- <div class="tour-photo" role="img" aria-label="A country road at sunset"></div>
- <div class="tour-content">
-  <div class="tour-heading"><h2>Upcoming shows</h2><a href="#contact">View all dates&nbsp; →</a></div>
-  <div class="dates">
-   <article class="date"><div class="date-num">TBA</div><div><strong>Opelika, AL</strong><small>Venue announcement<br>Coming soon</small></div><a class="btn" href="#contact">Get details</a></article>
-   <article class="date"><div class="date-num">TBA</div><div><strong>Auburn, AL</strong><small>Venue announcement<br>Coming soon</small></div><a class="btn" href="#contact">Get details</a></article>
-   <article class="date"><div class="date-num">TBA</div><div><strong>Alabama & beyond</strong><small>Live shows and<br>private events</small></div><a class="btn" href="#contact">Get details</a></article>
-  </div>
- </div>
-</section>
+<section class="section paper" id="tour"><div class="tour"><div><div class="eyebrow">Come see us</div><h2>Upcoming<br>shows</h2><p>Good songs, good people, and a little Alabama in every set.</p></div><div class="dates"><div class="date"><div class="date-big">LIVE</div><div><strong>Show dates</strong><small>Upcoming dates to be announced</small><a class="btn" href="#contact">Booking info</a></div></div><div class="date"><div class="date-big">AL</div><div><strong>Alabama & beyond</strong><small>Venues · Festivals · Private events</small><a class="btn" href="/epk/">View EPK</a></div></div><div class="date"><div class="date-big">♪</div><div><strong>Bring the music</strong><small>Now booking live performances</small><a class="btn" href="#contact">Get in touch</a></div></div></div></div></section>
 
 <section class="story" id="about">
  <div class="story-text">
