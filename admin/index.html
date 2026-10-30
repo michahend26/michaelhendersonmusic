@@ -74,7 +74,7 @@ const esc=(v='')=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','
 const slugify=s=>String(s||'').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const configs={
  albums:{table:'mh_albums',title:'Albums',description:'Create releases, upload cover artwork, and add links where fans can listen or purchase.',add:'Add album',order:'display_order',fields:[
-  {name:'title',label:'Album title',required:true},{name:'slug',label:'URL slug',required:true,hint:'Lowercase words separated by hyphens.'},{name:'description',label:'Description',type:'textarea',full:true},{name:'release_date',label:'Release date',type:'date'},{name:'purchase_url',label:'Purchase / download URL',type:'url',full:true},
+  {name:'title',label:'Album title',required:true},{name:'slug',label:'URL slug',required:true,hint:'Lowercase words separated by hyphens.'},{name:'description',label:'Description',type:'textarea',full:true},{name:'release_date',label:'Release date',type:'date'},{name:'display_order',label:'Display order',type:'number',default:'0'},{name:'purchase_url',label:'Purchase / download URL',type:'url',full:true},
   {name:'spotify',label:'Spotify URL',type:'url'},{name:'apple_music',label:'Apple Music URL',type:'url'},{name:'youtube_music',label:'YouTube Music URL',type:'url'},{name:'amazon_music',label:'Amazon Music URL',type:'url'},{name:'pandora',label:'Pandora URL',type:'url'},
   {name:'cover_file',label:'Album cover artwork',type:'file',accept:'image/jpeg,image/png,image/webp,image/avif',full:true,hint:'JPG, PNG, WebP, or AVIF. Max 25 MB.'}
  ]},
@@ -82,13 +82,13 @@ const configs={
   {name:'album_id',label:'Album',type:'select',required:true,full:true},{name:'title',label:'Track title',required:true},{name:'track_number',label:'Track number',type:'number',required:true,default:'1'},{name:'duration_seconds',label:'Duration (seconds)',type:'number'},{name:'audio_file',label:'Audio file',type:'file',accept:'audio/mpeg,audio/mp4,audio/aac,audio/x-m4a,audio/wav,audio/x-wav,audio/flac,audio/ogg',full:true,hint:'MP3, M4A/AAC, WAV, FLAC, or OGG. Max 50 MB.'}
  ]},
  merch:{table:'mh_merch',title:'Merchandise',description:'Manage product listings, photographs, prices, and links to your store checkout.',add:'Add product',order:'display_order',fields:[
-  {name:'title',label:'Product title',required:true},{name:'slug',label:'URL slug',required:true},{name:'description',label:'Description',type:'textarea',full:true},{name:'price',label:'Price (USD)',type:'number',step:'0.01'},{name:'product_url',label:'Store / checkout URL',type:'url',full:true},{name:'image_file',label:'Product image',type:'file',accept:'image/jpeg,image/png,image/webp,image/avif',full:true,hint:'JPG, PNG, WebP, or AVIF. Max 25 MB.'}
+  {name:'title',label:'Product title',required:true},{name:'slug',label:'URL slug',required:true},{name:'description',label:'Description',type:'textarea',full:true},{name:'price',label:'Price (USD)',type:'number',step:'0.01'},{name:'display_order',label:'Display order',type:'number',default:'0'},{name:'product_url',label:'Store / checkout URL',type:'url',full:true},{name:'image_file',label:'Product image',type:'file',accept:'image/jpeg,image/png,image/webp,image/avif',full:true,hint:'JPG, PNG, WebP, or AVIF. Max 25 MB.'}
  ]},
  tour:{table:'mh_tour_dates',title:'Tour dates',description:'Add upcoming performances, venue details, and ticket links.',add:'Add date',order:'event_date',fields:[
   {name:'event_name',label:'Event name',required:true},{name:'venue',label:'Venue'},{name:'city',label:'City',required:true},{name:'region',label:'State / region'},{name:'event_date',label:'Date',type:'date',required:true},{name:'event_time',label:'Time'},{name:'ticket_url',label:'Ticket URL',type:'url',full:true},{name:'notes',label:'Additional notes',type:'textarea',full:true}
  ]},
  videos:{table:'mh_videos',title:'Videos',description:'Add YouTube or Vimeo videos and upload thumbnail artwork.',add:'Add video',order:'display_order',fields:[
-  {name:'title',label:'Video title',required:true},{name:'video_url',label:'YouTube / Vimeo URL',type:'url',required:true,full:true},{name:'description',label:'Description',type:'textarea',full:true},{name:'thumbnail_file',label:'Thumbnail image',type:'file',accept:'image/jpeg,image/png,image/webp,image/avif',full:true,hint:'JPG, PNG, WebP, or AVIF. Max 25 MB.'}
+  {name:'title',label:'Video title',required:true},{name:'video_url',label:'YouTube / Vimeo URL',type:'url',required:true,full:true},{name:'description',label:'Description',type:'textarea',full:true},{name:'display_order',label:'Display order',type:'number',default:'0'},{name:'thumbnail_file',label:'Thumbnail image',type:'file',accept:'image/jpeg,image/png,image/webp,image/avif',full:true,hint:'JPG, PNG, WebP, or AVIF. Max 25 MB.'}
  ]}
 };
 let currentTab='albums',currentEdit=null,albumsCache=[];
