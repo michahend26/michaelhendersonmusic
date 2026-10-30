@@ -317,8 +317,7 @@ async function loadPublishedMerch(){
  root.innerHTML=data.map(item=>{
   const img=media(item.image_path,'mh-public-media');
   const title=htmlSafe(item.title);
-  const price=item.price===null||item.price===undefined?'':'
-</html>+Number(item.price).toFixed(2);
+  const price=item.price===null||item.price===undefined?'':String.fromCharCode(36)+Number(item.price).toFixed(2);
   const url=item.product_url?safeLink(item.product_url):'#contact';
   return '<article class="merch-product"><a href="'+htmlSafe(url)+'" '+(item.product_url?'target="_blank" rel="noopener noreferrer"':'')+'>'+(img?'<img src="'+htmlSafe(img)+'" alt="'+title+'">':'')+'<strong>'+title+'</strong></a>'+(price?'<small>'+price+'</small>':'')+'</article>';
  }).join('');
