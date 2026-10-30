@@ -166,31 +166,49 @@ img{max-width:100%}
 }
 
 
-/* Balanced three-column album release: full cover, readable copy, uncropped artist photo */
+/* Three-column album release with natural height so no copy, cover, or buttons are clipped */
 .release{
- height:21.4vw;
- min-height:260px;
- max-height:330px;
- grid-template-columns:25% 37% 38%;
+ height:auto;
+ min-height:clamp(420px,36vw,520px);
+ max-height:none;
+ overflow:visible;
+ grid-template-columns:24% 40% 36%;
  gap:0;
- padding:1.1vw 4%;
+ padding:34px 4%;
  align-items:center;
 }
 .release .cover{
  width:100%;
  height:auto;
- max-height:100%;
+ max-height:none;
  aspect-ratio:1;
 }
 .release-copy{
  grid-column:2;
  max-width:none;
- padding:0 2vw;
+ padding:0 clamp(14px,2vw,28px);
+}
+.release-copy .script{
+ font-size:clamp(28px,3.5vw,48px);
+ line-height:1.08;
+ margin-bottom:clamp(10px,1.3vw,16px);
+}
+.release .copy{
+ font-size:clamp(10px,.95vw,13px);
+ line-height:1.55;
+}
+.release .platforms{
+ gap:7px;
+ margin:clamp(12px,1.3vw,18px) 0;
+}
+.release .platform{
+ font-size:clamp(8px,.68vw,10px);
+ padding:6px 8px;
 }
 .release:after{
  right:0;
  top:0;
- width:38%;
+ width:36%;
  height:100%;
  background:#171613 url('/assets/Michael_Henderson_Approved_Site_Photos/artist-guitar-close.webp') center/contain no-repeat;
  opacity:1;
@@ -209,6 +227,10 @@ img{max-width:100%}
   grid-column:auto;
   padding:0;
  }
+ .release-copy .script{
+  font-size:clamp(25px,6.5vw,35px);
+ }
+ .release .copy{font-size:11px}
  .release:after{
   position:relative;
   inset:auto;
