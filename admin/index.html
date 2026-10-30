@@ -230,9 +230,10 @@ $('editorForm').addEventListener('submit',async e=>{
    payload[field]=path;
   }
   if(currentTab==='tracks'&&!payload.album_id)throw new Error('Choose an album for this track.');
-  if(currentEdit){const {error}=await sb.from(cfg.table).update(payload).eq('id',currentEdit.id);if(error)throw error;}
+  const wasEditing=!!currentEdit;
+  if(wasEditing){const {error}=await sb.from(cfg.table).update(payload).eq('id',currentEdit.id);if(error)throw error;}
   else{const {error}=await sb.from(cfg.table).insert(payload);if(error)throw error;}
-  closeEditor();setStatus(currentEdit?'Changes saved.':'Item added.',true);await loadCurrent();
+  closeEditor();setStatus(wasEditing?'Changes saved.':'Item added.',true);await loadCurrent();
  }catch(err){setStatus(err.message||'Unable to save item.');}
  finally{$('saveBtn').disabled=false;$('saveBtn').textContent='Save changes';}
 });
