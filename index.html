@@ -168,6 +168,23 @@ img{max-width:100%}
 }
 
 
+
+/* CMS-fed merchandise cards; the approved fallback collage remains when no products are published. */
+#store .merch-row.dynamic-products{left:5%;right:5%;bottom:2%;height:76%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.3vw;align-items:stretch;overflow:visible}
+#store .merch-product{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;background:#171512;border:1px solid #8d76534d;padding:8px 8px 10px;box-shadow:0 5px 16px #0006}
+#store .merch-product a{display:flex;flex:1;min-height:0;width:100%;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+#store .merch-product img{display:block;width:100%;height:78%;object-fit:contain;filter:drop-shadow(0 4px 5px #0008)}
+#store .merch-product strong{font:600 clamp(8px,.9vw,12px)/1.15 var(--display);text-transform:uppercase;color:var(--cream)}
+#store .merch-product small{font-size:clamp(7px,.72vw,10px);color:var(--gold)}
+#tour .date .date-big .month{display:block;margin-top:4px;font:600 10px var(--display);letter-spacing:1px;text-transform:uppercase;color:#756044}
+@media(max-width:560px){
+ #store .merch-row.dynamic-products{left:4%;right:4%;bottom:2%;height:74%;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;overflow-y:auto;overflow-x:hidden;align-content:start}
+ #store .merch-product{min-height:128px;padding:7px}
+ #store .merch-product img{height:82px}
+ #store .merch-product strong{font-size:10px}
+ #store .merch-product small{font-size:9px}
+}
+
 </style>
 </head>
 <body>
@@ -260,5 +277,53 @@ img{max-width:100%}
  </div>
  <a href="#top" aria-label="Back to top"><img class="foot-mark" src="/assets/mh-monogram.svg" alt=""></a>
 </footer>
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+const cms=createClient('https://lwmgfetszqzmnfjdmqbm.supabase.co','sb_publishable_avkSF8xApJuFndX0jg2-ow_S4CstFth');
+const htmlSafe=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const media=(path,bucket)=>{if(!path)return '';if(/^https?:\/\//i.test(path)||path.startsWith('/'))return path;return cms.storage.from(bucket).getPublicUrl(path).data.publicUrl;};
+const safeLink=value=>{try{const u=new URL(value,window.location.origin);return ['http:','https:'].includes(u.protocol)?u.href:'#contact';}catch{return '#contact';}};
+async function loadPublishedShows(){
+ const root=document.querySelector('#tour .dates');if(!root)return;
+ const today=new Date().toISOString().slice(0,10);
+ const {data,error}=await cms.from('mh_tour_dates').select('*').eq('is_published',true).gte('event_date',today).order('event_date').order('display_order').limit(6);
+ if(error||!data?.length)return;
+ root.innerHTML=data.map(item=>{
+  const d=new Date(item.event_date+'T12:00:00');
+  const dateNum=d.toLocaleDateString('en-US',{day:'2-digit'});
+  const month=d.toLocaleDateString('en-US',{month:'short'});
+  const detail=[item.venue,item.city,item.region].filter(Boolean).join(' · ');
+  const note=[item.event_time,item.notes].filter(Boolean).join(' · ');
+  const meta=[detail,note].filter(Boolean).join(' — ');
+  const href=item.ticket_url?safeLink(item.ticket_url):'#contact';
+  const action=item.ticket_url?'Tickets / Info':'Booking info';
+  return '<div class="date"><div class="date-big">'+dateNum+'<span class="month">'+htmlSafe(month)+'</span></div><div><strong>'+htmlSafe(item.event_name)+'</strong><small>'+htmlSafe(meta||'Upcoming performance')+'</small><a class="btn" href="'+htmlSafe(href)+'" '+(item.ticket_url?'target="_blank" rel="noopener noreferrer"':'')+'>'+action+'</a></div></div>';
+ }).join('');
+}
+async function loadPublishedVideos(){
+ const root=document.querySelector('#videos .vidgrid');if(!root)return;
+ const {data,error}=await cms.from('mh_videos').select('*').eq('is_published',true).order('display_order').order('created_at',{ascending:false}).limit(6);
+ if(error||!data?.length)return;
+ root.innerHTML=data.map(item=>{
+  const thumb=media(item.thumbnail_path,'mh-public-media')||'/assets/Michael_Henderson_Approved_Site_Photos/artist-hero.webp';
+  return '<a class="vid" href="'+htmlSafe(safeLink(item.video_url))+'" target="_blank" rel="noopener noreferrer"><div class="thumb"><img src="'+htmlSafe(thumb)+'" alt="'+htmlSafe(item.title)+'"><span class="play">▶</span></div><strong>'+htmlSafe(item.title)+'</strong><small>'+htmlSafe(item.description||'Watch video')+'</small></a>';
+ }).join('');
+}
+async function loadPublishedMerch(){
+ const root=document.querySelector('#store .merch-row');if(!root)return;
+ const {data,error}=await cms.from('mh_merch').select('*').eq('is_published',true).order('display_order').order('title').limit(10);
+ if(error||!data?.length)return;
+ root.classList.add('dynamic-products');
+ root.innerHTML=data.map(item=>{
+  const img=media(item.image_path,'mh-public-media');
+  const title=htmlSafe(item.title);
+  const price=item.price===null||item.price===undefined?'':'
+</html>+Number(item.price).toFixed(2);
+  const url=item.product_url?safeLink(item.product_url):'#contact';
+  return '<article class="merch-product"><a href="'+htmlSafe(url)+'" '+(item.product_url?'target="_blank" rel="noopener noreferrer"':'')+'>'+(img?'<img src="'+htmlSafe(img)+'" alt="'+title+'">':'')+'<strong>'+title+'</strong></a>'+(price?'<small>'+price+'</small>':'')+'</article>';
+ }).join('');
+}
+Promise.allSettled([loadPublishedShows(),loadPublishedVideos(),loadPublishedMerch()]);
+</script>
 </body>
 </html>
