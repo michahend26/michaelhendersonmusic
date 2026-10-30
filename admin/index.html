@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Artist Admin | Michael Henderson</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#11100e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Rye&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#11100e;--black:#0b0b0a;--cream:#f0e4cc;--paper:#eee1c9;--gold:#d3ac7b;--rust:#963e30;--muted:#b8a58b;--display:'Oswald',sans-serif;--body:'DM Sans',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--ink);color:var(--cream);font:14px var(--body)}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.top{height:68px;padding:0 4%;display:flex;align-items:center;justify-content:space-between;background:#090908;border-bottom:1px solid #b99a6a55}.brand{width:46px}.top-title{font:600 12px var(--display);letter-spacing:2px;text-transform:uppercase;color:var(--gold)}.top-actions{display:flex;align-items:center;gap:16px}.top-actions a,.top-actions button{font:600 10px var(--display);letter-spacing:1px;text-transform:uppercase;color:var(--cream);background:none;border:0}
+.login-wrap{min-height:calc(100vh - 68px);display:grid;place-items:center;padding:30px 16px;background:radial-gradient(ellipse at 50% 20%,#4d36254c,transparent 60%)}.login-card{width:min(430px,100%);padding:34px;background:#191713;border:1px solid #88704d;box-shadow:0 18px 55px #0009}.eyebrow{font:500 10px var(--display);letter-spacing:3px;text-transform:uppercase;color:var(--gold)}h1{font:700 34px/1 var(--display);text-transform:uppercase;margin:12px 0}.login-card p{color:#c9b99c;line-height:1.6;font-size:12px;margin-bottom:24px}
+.field{display:grid;gap:7px;margin:14px 0}.field label{font:600 10px var(--display);letter-spacing:1px;text-transform:uppercase;color:#d4c4a8}.field input,.field textarea,.field select{width:100%;background:#0e0e0c;border:1px solid #67563d;color:var(--cream);padding:12px;min-height:42px;border-radius:2px;outline:none}.field textarea{min-height:95px;resize:vertical;line-height:1.5}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold)}.field input[type=file]{padding:9px;color:#bcae94}.hint{font-size:10px;color:#9d9079;line-height:1.4}
+.btn{min-height:40px;padding:0 16px;background:var(--gold);border:1px solid var(--gold);color:#17120c;font:700 10px var(--display);letter-spacing:1px;text-transform:uppercase}.btn.ghost{background:transparent;border-color:#9a8564;color:var(--cream)}.btn.danger{background:transparent;border-color:#a34c3b;color:#e2a292}.btn.small{min-height:30px;padding:0 10px;font-size:9px}.btn:hover{filter:brightness(1.12)}.login-actions{display:flex;gap:9px;margin-top:20px}.status{font-size:11px;line-height:1.5;color:#e1a28f;min-height:18px;margin-top:12px}.status.ok{color:#c7d0a1}
+.app{display:none;min-height:calc(100vh - 68px);grid-template-columns:230px minmax(0,1fr)}.sidebar{background:#0c0c0a;border-right:1px solid #b99a6a33;padding:26px 15px}.side-label{font:500 9px var(--display);letter-spacing:2px;text-transform:uppercase;color:#9d8b6d;padding:0 10px;margin:5px 0 13px}.side-nav{display:grid;gap:5px}.side-nav button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:transparent;border:1px solid transparent;color:#d9cbb4;padding:12px 10px;font:600 11px var(--display);letter-spacing:.8px;text-transform:uppercase}.side-nav button.active,.side-nav button:hover{background:#211e18;border-color:#6e5b3f;color:var(--gold)}.side-nav .ico{width:18px;text-align:center;color:var(--gold);font-size:15px}
+.content{padding:34px clamp(18px,4vw,55px) 60px;min-width:0;max-width:1500px}.content-head{display:flex;align-items:end;justify-content:space-between;gap:20px;padding-bottom:22px;border-bottom:1px solid #806b4a55;margin-bottom:22px}.content-head h2{font:700 clamp(28px,3vw,38px)/1 var(--display);text-transform:uppercase;margin:8px 0 0}.content-head p{font-size:11px;color:#bcae94;margin:8px 0 0}.head-actions{display:flex;gap:8px;flex-wrap:wrap}
+.notice{padding:12px 15px;border:1px solid #806b4a;background:#1b1812;color:#d9c7a8;font-size:11px;line-height:1.5;margin-bottom:18px}.cards{display:grid;gap:10px}.item{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:15px;align-items:center;padding:14px;background:#181612;border:1px solid #5f4d35}.item-image{width:64px;height:64px;object-fit:cover;background:#282117;border:1px solid #7c6645}.item-copy{min-width:0}.item-copy h3{font:600 16px var(--display);text-transform:uppercase;margin:0 0 4px;overflow-wrap:anywhere}.item-copy p{font-size:10px;color:#bcae94;margin:0;line-height:1.5}.item-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:end}.tag{display:inline-block;padding:4px 7px;margin-left:7px;font:600 8px var(--display);letter-spacing:.7px;text-transform:uppercase;border:1px solid #726044;color:#cdb58e}.tag.live{color:#c8d29d;border-color:#657044}.empty{padding:35px;border:1px dashed #776447;text-align:center;color:#c8b99d;background:#171511}.empty strong{display:block;font:600 20px var(--display);text-transform:uppercase;color:var(--cream);margin-bottom:7px}
+.modal{display:none;position:fixed;inset:0;z-index:20;background:#000b;padding:20px;overflow:auto;place-items:center}.modal.open{display:grid}.modal-card{width:min(700px,100%);max-height:calc(100vh - 40px);overflow:auto;background:#191713;border:1px solid #91764d;padding:24px;box-shadow:0 20px 60px #000b}.modal-head{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:18px}.modal-head h2{font:700 27px var(--display);text-transform:uppercase;margin:5px 0}.close{border:0;background:none;color:#ddc9a9;font-size:25px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}.field.full{grid-column:1/-1}.form-actions{display:flex;justify-content:space-between;gap:10px;margin-top:20px;padding-top:15px;border-top:1px solid #806b4a55}
+@media(max-width:760px){.app{grid-template-columns:1fr}.sidebar{padding:10px 12px;border-right:0;border-bottom:1px solid #b99a6a33}.side-label{display:none}.side-nav{display:flex;overflow-x:auto}.side-nav button{width:auto;white-space:nowrap;padding:10px}.content{padding:25px 14px 45px}.content-head{align-items:start;flex-direction:column}.item{grid-template-columns:48px minmax(0,1fr)}.item-image{width:48px;height:48px}.item-actions{grid-column:1/-1;justify-content:start}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.top-title{font-size:10px}.top-actions{gap:8px}.item-copy h3{font-size:14px}}
+</style>
+</head>
+<body>
+<header class="top">
+ <a href="/" aria-label="Return to website"><img class="brand" src="/assets/mh-monogram.svg" alt="MH"></a>
+ <div class="top-title">Michael Henderson · Artist Admin</div>
+ <div class="top-actions"><a href="/music/" target="_blank" rel="noopener">View Music Page ↗</a><button id="logoutTop" style="display:none">Sign out</button></div>
+</header>
+<section id="loginView" class="login-wrap">
+ <div class="login-card">
+  <div class="eyebrow">Private access</div><h1>Artist Admin</h1>
+  <p>Sign in to manage music releases, tracks, merchandise, tour dates, and videos for the Michael Henderson website.</p>
+  <form id="loginForm">
+   <div class="field"><label for="email">Email address</label><input id="email" type="email" autocomplete="username" required></div>
+   <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required minlength="8"></div>
+   <div class="login-actions"><button class="btn" type="submit">Sign in</button><button class="btn ghost" id="signupBtn" type="button">Create account</button></div>
+  </form>
+  <div id="loginStatus" class="status" role="status"></div>
+ </div>
+</section>
+<section id="appView" class="app">
+ <aside class="sidebar">
+  <div class="side-label">Manage website</div>
+  <nav class="side-nav" id="sideNav">
+   <button class="active" data-tab="albums"><span class="ico">▣</span>Albums</button>
+   <button data-tab="tracks"><span class="ico">♫</span>Tracks</button>
+   <button data-tab="merch"><span class="ico">◇</span>Merchandise</button>
+   <button data-tab="tour"><span class="ico">✦</span>Tour dates</button>
+   <button data-tab="videos"><span class="ico">▷</span>Videos</button>
+  </nav>
+ </aside>
+ <main class="content">
+  <div class="content-head"><div><div class="eyebrow">Content manager</div><h2 id="pageTitle">Albums</h2><p id="pageDescription">Create releases, upload cover artwork, and add links where fans can listen or purchase.</p></div><div class="head-actions"><button class="btn" id="addBtn">+ Add album</button></div></div>
+  <div class="notice">Changes are saved to the Michael Henderson Music database. Draft items stay private until published. Public audio uploads can be streamed by anyone who has the audio URL.</div>
+  <div id="items" class="cards"><div class="empty"><strong>Loading content</strong>Connecting to the catalog…</div></div>
+  <div id="pageStatus" class="status" role="status"></div>
+ </main>
+</section>
+<div id="editor" class="modal" role="dialog" aria-modal="true" aria-labelledby="editorTitle">
+ <div class="modal-card"><div class="modal-head"><div><div class="eyebrow">Content editor</div><h2 id="editorTitle">Add item</h2></div><button class="close" id="closeEditor" aria-label="Close editor">×</button></div>
+  <form id="editorForm"><div id="formFields" class="form-grid"></div><div class="form-actions"><button type="button" class="btn ghost" id="cancelEdit">Cancel</button><button type="submit" class="btn" id="saveBtn">Save changes</button></div></form>
+ </div>
+</div>
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+const SUPABASE_URL='https://lwmgfetszqzmnfjdmqbm.supabase.co';
+const SUPABASE_KEY='sb_publishable_avkSF8xApJuFndX0jg2-ow_S4CstFth';
+const sb=createClient(SUPABASE_URL,SUPABASE_KEY);
+const $=id=>document.getElementById(id);
+const esc=(v='')=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const slugify=s=>String(s||'').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const configs={
+ albums:{table:'mh_albums',title:'Albums',description:'Create releases, upload cover artwork, and add links where fans can listen or purchase.',add:'Add album',order:'display_order',fields:[
+  {name:'title',label:'Album title',required:true},{name:'slug',label:'URL slug',required:true,hint:'Lowercase words separated by hyphens.'},{name:'description',label:'Description',type:'textarea',full:true},{name:'release_date',label:'Release date',type:'date'},{name:'purchase_url',label:'Purchase / download URL',type:'url',full:true},
+  {name:'spotify',label:'Spotify URL',type:'url'},{name:'apple_music',label:'Apple Music URL',type:'url'},{name:'youtube_music',label:'YouTube Music URL',type:'url'},{name:'amazon_music',label:'Amazon Music URL',type:'url'},{name:'pandora',label:'Pandora URL',type:'url'},
+  {name:'cover_file',label:'Album cover artwork',type:'file',accept:'image/jpeg,image/png,image/webp,image/avif',full:true,hint:'JPG, PNG, WebP, or AVIF. Max 25 MB.'}
+ ]},
+ tracks:{table:'mh_tracks',title:'Tracks',description:'Add individual songs to an album and upload the audio fans can stream.',add:'Add track',order:'track_number',fields:[
+  {name:'album_id',label:'Album',type:'select',required:true,full:true},{name:'title',label:'Track title',required:true},{name:'track_number',label:'Track number',type:'number',required:true,default:'1'},{name:'duration_seconds',label:'Duration (seconds)',type:'number'},{name:'audio_file',label:'Audio file',type:'file',accept:'audio/mpeg,audio/mp4,audio/aac,audio/x-m4a,audio/wav,audio/x-wav,audio/flac,audio/ogg',full:true,hint:'MP3, M4A/AAC, WAV, FLAC, or OGG. Max 50 MB.'}
+ ]},
+ merch:{table:'mh_merch',title:'Merchandise',description:'Manage product listings, photographs, prices, and links to your store checkout.',add:'Add product',order:'display_order',fields:[
+  {name:'title',label:'Product title',required:true},{name:'slug',label:'URL slug',required:true},{name:'description',label:'Description',type:'textarea',full:true},{name:'price',label:'Price (USD)',type:'number',step:'0.01'},{name:'product_url',label:'Store / checkout URL',type:'url',full:true},{name:'image_file',label:'Product image',type:'file',accept:'image/jpeg,image/png,image/webp,image/avif',full:true,hint:'JPG, PNG, WebP, or AVIF. Max 25 MB.'}
+ ]},
+ tour:{table:'mh_tour_dates',title:'Tour dates',description:'Add upcoming performances, venue details, and ticket links.',add:'Add date',order:'event_date',fields:[
+  {name:'event_name',label:'Event name',required:true},{name:'venue',label:'Venue'},{name:'city',label:'City',required:true},{name:'region',label:'State / region'},{name:'event_date',label:'Date',type:'date',required:true},{name:'event_time',label:'Time'},{name:'ticket_url',label:'Ticket URL',type:'url',full:true},{name:'notes',label:'Additional notes',type:'textarea',full:true}
+ ]},
+ videos:{table:'mh_videos',title:'Videos',description:'Add YouTube or Vimeo videos and upload thumbnail artwork.',add:'Add video',order:'display_order',fields:[
+  {name:'title',label:'Video title',required:true},{name:'video_url',label:'YouTube / Vimeo URL',type:'url',required:true,full:true},{name:'description',label:'Description',type:'textarea',full:true},{name:'thumbnail_file',label:'Thumbnail image',type:'file',accept:'image/jpeg,image/png,image/webp,image/avif',full:true,hint:'JPG, PNG, WebP, or AVIF. Max 25 MB.'}
+ ]}
+};
+let currentTab='albums',currentEdit=null,albumsCache=[];
+function setStatus(message,ok=false){$('pageStatus').textContent=message;$('pageStatus').className='status'+(ok?' ok':'');}
+function setLoginStatus(message,ok=false){$('loginStatus').textContent=message;$('loginStatus').className='status'+(ok?' ok':'');}
+function publicUrl(path,bucket){if(!path)return '';if(/^https?:\/\//i.test(path)||path.startsWith('/'))return path;return sb.storage.from(bucket).getPublicUrl(path).data.publicUrl;}
+async function showApp(){
+ const {data:{session}}=await sb.auth.getSession();
+ if(!session){$('loginView').style.display='grid';$('appView').style.display='none';$('logoutTop').style.display='none';return;}
+ const {data:isAdmin,error}=await sb.rpc('mh_is_admin');
+ if(error||!isAdmin){$('loginView').style.display='grid';$('appView').style.display='none';$('logoutTop').style.display='inline';setLoginStatus('This account does not have administrator access. Please contact the site owner.');return;}
+ $('loginView').style.display='none';$('appView').style.display='grid';$('logoutTop').style.display='inline';await loadCurrent();
+}
+$('loginForm').addEventListener('submit',async e=>{
+ e.preventDefault();setLoginStatus('Signing in…');
+ const {error}=await sb.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});
+ if(error){setLoginStatus(error.message);return;}setLoginStatus('');await showApp();
+});
+$('signupBtn').addEventListener('click',async()=>{
+ const email=$('email').value.trim(),password=$('password').value;
+ if(!email||password.length<8){setLoginStatus('Enter the authorized email address and a password of at least 8 characters.');return;}
+ setLoginStatus('Creating your account…');
+ const {data,error}=await sb.auth.signUp({email,password});
+ if(error){setLoginStatus(error.message);return;}
+ if(data.session){await showApp();return;}
+ setLoginStatus('Account created. Check your email to confirm the address, then sign in.',true);
+});
+async function logout(){await sb.auth.signOut();await showApp();setLoginStatus('You have signed out.',true);}
+$('logoutTop').addEventListener('click',logout);
+sb.auth.onAuthStateChange(()=>{setTimeout(showApp,0);});
+$('sideNav').addEventListener('click',e=>{
+ const button=e.target.closest('button[data-tab]');if(!button)return;
+ currentTab=button.dataset.tab;loadCurrent();
+});
+$('addBtn').addEventListener('click',()=>openEditor(null));
+$('closeEditor').addEventListener('click',closeEditor);$('cancelEdit').addEventListener('click',closeEditor);
+$('editor').addEventListener('click',e=>{if(e.target===$('editor'))closeEditor();});
+function closeEditor(){$('editor').classList.remove('open');currentEdit=null;}
+async function loadAlbums(){
+ const {data,error}=await sb.from('mh_albums').select('*').order('display_order').order('title');
+ if(error)throw error;albumsCache=data||[];return albumsCache;
+}
+async function loadCurrent(){
+ const cfg=configs[currentTab];document.querySelectorAll('#sideNav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===currentTab));
+ $('pageTitle').textContent=cfg.title;$('pageDescription').textContent=cfg.description;$('addBtn').textContent='+ '+cfg.add;setStatus('');
+ $('items').innerHTML='<div class="empty"><strong>Loading</strong>Loading your content…</div>';
+ try{
+  if(currentTab==='tracks')await loadAlbums();
+  const {data,error}=await sb.from(cfg.table).select('*').order(cfg.order,{ascending:true});
+  if(error)throw error;
+  renderItems(data||[]);
+ }catch(err){$('items').innerHTML='<div class="empty"><strong>Unable to load content</strong>'+esc(err.message)+'</div>';}
+}
+function renderItems(rows){
+ if(!rows.length){$('items').innerHTML='<div class="empty"><strong>No '+esc(configs[currentTab].title.toLowerCase())+' yet</strong>Use the button above to add your first item.</div>';return;}
+ $('items').innerHTML=rows.map(row=>{
+  let title='',meta='',img='',bucket='';
+  if(currentTab==='albums'){title=row.title;meta=row.release_date||'Album release';img=row.cover_image_path;bucket='mh-public-media';}
+  if(currentTab==='tracks'){title=row.title;const a=albumsCache.find(x=>x.id===row.album_id);meta=(a?a.title:'Album')+' · Track '+row.track_number;img=a?.cover_image_path;bucket='mh-public-media';}
+  if(currentTab==='merch'){title=row.title;meta=row.price!=null?'$'+Number(row.price).toFixed(2):'Merchandise product';img=row.image_path;bucket='mh-public-media';}
+  if(currentTab==='tour'){title=row.event_name;meta=[row.event_date,row.venue,row.city,row.region].filter(Boolean).join(' · ');}
+  if(currentTab==='videos'){title=row.title;meta=row.video_url||'Video';img=row.thumbnail_path;bucket='mh-public-media';}
+  const image=img?'<img class="item-image" src="'+esc(publicUrl(img,bucket))+'" alt="">':'<div class="item-image"></div>';
+  return '<article class="item" data-id="'+esc(row.id)+'">'+image+'<div class="item-copy"><h3>'+esc(title)+'<span class="tag '+(row.is_published?'live':'')+'">'+(row.is_published?'Published':'Draft')+'</span></h3><p>'+esc(meta)+'</p></div><div class="item-actions"><button class="btn ghost small" data-action="toggle">'+(row.is_published?'Unpublish':'Publish')+'</button><button class="btn ghost small" data-action="edit">Edit</button><button class="btn danger small" data-action="delete">Delete</button></div></article>';
+ }).join('');
+ $('items').querySelectorAll('.item').forEach(el=>{
+  el.addEventListener('click',e=>{
+   const action=e.target.closest('button[data-action]')?.dataset.action;if(!action)return;
+   const row=rows.find(x=>x.id===el.dataset.id);if(!row)return;
+   if(action==='edit')openEditor(row);
+   if(action==='toggle')togglePublished(row);
+   if(action==='delete')deleteRow(row);
+  });
+ });
+}
+async function togglePublished(row){
+ const next=!row.is_published;const {error}=await sb.from(configs[currentTab].table).update({is_published:next}).eq('id',row.id);
+ if(error){setStatus(error.message);return;}setStatus(next?'Item published.':'Item unpublished.',true);await loadCurrent();
+}
+async function deleteRow(row){
+ if(!confirm('Delete this item? This cannot be undone.'))return;
+ const {error}=await sb.from(configs[currentTab].table).delete().eq('id',row.id);
+ if(error){setStatus(error.message);return;}setStatus('Item deleted.',true);await loadCurrent();
+}
+function fieldHtml(field,value,edit){
+ const val=value??field.default??'';
+ let control='';
+ if(field.type==='textarea')control='<textarea name="'+field.name+'" '+(field.required?'required':'')+'>'+esc(val)+'</textarea>';
+ else if(field.type==='select'){
+  const options=albumsCache.map(a=>'<option value="'+esc(a.id)+'" '+(val===a.id?'selected':'')+'>'+esc(a.title)+'</option>').join('');
+  control='<select name="'+field.name+'" required><option value="">Choose an album</option>'+options+'</select>';
+ }else if(field.type==='file'){
+  control='<input name="'+field.name+'" type="file" accept="'+(field.accept||'')+'"><div class="hint">'+(field.hint||'')+(edit&&value?'<br>Current file is retained unless you upload a replacement.':'')+'</div>';
+ }else{
+  control='<input name="'+field.name+'" type="'+(field.type||'text')+'" value="'+esc(val)+'" '+(field.step?'step="'+field.step+'"':'')+' '+(field.required?'required':'')+' '+(field.type==='number'?'min="0"':'')+'>';
+ }
+ return '<div class="field '+(field.full?'full':'')+'"><label>'+esc(field.label)+(field.required?' *':'')+'</label>'+control+(field.hint&&field.type!=='file'?'<div class="hint">'+esc(field.hint)+'</div>':'')+'</div>';
+}
+function openEditor(row){
+ currentEdit=row;
+ const cfg=configs[currentTab];$('editorTitle').textContent=(row?'Edit ':'Add ')+cfg.title.replace(/s$/,'').replace('Merchandise','product').replace('Tour date','tour date');
+ let html=cfg.fields.map(f=>{
+  let val=row?.[f.name]??'';
+  if(currentTab==='albums'&&row?.streaming_links)val=row.streaming_links[f.name]||'';
+  if(currentTab==='tracks'&&f.name==='album_id')val=row?.album_id||'';
+  if(f.type==='file')val=(currentTab==='albums'?row?.cover_image_path:currentTab==='tracks'?row?.audio_path:currentTab==='merch'?row?.image_path:row?.thumbnail_path)||'';
+  return fieldHtml(f,val,!!row);
+ }).join('');
+ if(currentTab==='albums')html+='<div class="field full"><div class="hint">Streaming links appear as platform buttons on the public Music page. Leave a platform blank if no link is available.</div></div>';
+ $('formFields').innerHTML=html;
+ if(!row&&currentTab==='albums')$('formFields').querySelector('[name="title"]').addEventListener('input',e=>{const slug=$('formFields').querySelector('[name="slug"]');if(!slug.dataset.touched)slug.value=slugify(e.target.value);});
+ const slug=$('formFields').querySelector('[name="slug"]');if(slug)slug.addEventListener('input',()=>slug.dataset.touched='1');
+ $('editor').classList.add('open');
+}
+async function upload(file,bucket,folder){
+ if(!file)return null;
+ const safe=file.name.replace(/[^a-zA-Z0-9._-]/g,'-');
+ const path=folder+'/'+crypto.randomUUID()+'-'+safe;
+ const {data,error}=await sb.storage.from(bucket).upload(path,file,{contentType:file.type,upsert:false});
+ if(error)throw error;return data.path;
+}
+$('editorForm').addEventListener('submit',async e=>{
+ e.preventDefault();const cfg=configs[currentTab],form=e.currentTarget,fd=new FormData(form),payload={};
+ for(const f of cfg.fields){if(f.type==='file')continue;const v=fd.get(f.name);if(v!==null&&v!=='')payload[f.name]=f.type==='number'?Number(v):v;}
+ if(currentTab==='albums'){
+  if(!payload.slug)payload.slug=slugify(payload.title);
+  payload.streaming_links={};
+  for(const k of ['spotify','apple_music','youtube_music','amazon_music','pandora']){const v=fd.get(k);if(v)payload.streaming_links[k]=v;}
+ }
+ try{
+  $('saveBtn').disabled=true;$('saveBtn').textContent='Saving…';
+  const fileField=currentTab==='albums'?'cover_file':currentTab==='tracks'?'audio_file':currentTab==='merch'?'image_file':currentTab==='videos'?'thumbnail_file':null;
+  const file=fileField?fd.get(fileField):null;
+  if(file&&file.size){
+   const bucket=currentTab==='tracks'?'mh-audio':'mh-public-media';
+   const folder=currentTab==='albums'?'covers':currentTab==='tracks'?'tracks':currentTab==='merch'?'products':'video-thumbnails';
+   const path=await upload(file,bucket,folder);
+   const field=currentTab==='albums'?'cover_image_path':currentTab==='tracks'?'audio_path':currentTab==='merch'?'image_path':'thumbnail_path';
+   payload[field]=path;
+  }
+  if(currentTab==='tracks'&&!payload.album_id)throw new Error('Choose an album for this track.');
+  if(currentEdit){const {error}=await sb.from(cfg.table).update(payload).eq('id',currentEdit.id);if(error)throw error;}
+  else{const {error}=await sb.from(cfg.table).insert(payload);if(error)throw error;}
+  closeEditor();setStatus(currentEdit?'Changes saved.':'Item added.',true);await loadCurrent();
+ }catch(err){setStatus(err.message||'Unable to save item.');}
+ finally{$('saveBtn').disabled=false;$('saveBtn').textContent='Save changes';}
+});
+showApp();
+</script>
+</body>
+</html>
