@@ -165,6 +165,62 @@ img{max-width:100%}
  #tour .date .btn{grid-column:2;width:max-content;align-self:start}
 }
 
+
+/* Balanced three-column album release: full cover, readable copy, uncropped artist photo */
+.release{
+ height:21.4vw;
+ min-height:260px;
+ max-height:330px;
+ grid-template-columns:25% 37% 38%;
+ gap:0;
+ padding:1.1vw 4%;
+ align-items:center;
+}
+.release .cover{
+ width:100%;
+ height:auto;
+ max-height:100%;
+ aspect-ratio:1;
+}
+.release-copy{
+ grid-column:2;
+ max-width:none;
+ padding:0 2vw;
+}
+.release:after{
+ right:0;
+ top:0;
+ width:38%;
+ height:100%;
+ background:#171613 url('/assets/Michael_Henderson_Approved_Site_Photos/artist-guitar-close.webp') center/contain no-repeat;
+ opacity:1;
+ mix-blend-mode:normal;
+}
+@media(max-width:760px){
+ .release{
+  height:auto;
+  min-height:0;
+  max-height:none;
+  grid-template-columns:40% minmax(0,1fr);
+  gap:5%;
+  padding:28px 6%;
+ }
+ .release-copy{
+  grid-column:auto;
+  padding:0;
+ }
+ .release:after{
+  position:relative;
+  inset:auto;
+  grid-column:1/-1;
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:16/9;
+  margin-top:8px;
+  background-size:contain;
+ }
+}
 </style>
 </head>
 <body>
